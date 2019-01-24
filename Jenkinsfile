@@ -29,7 +29,7 @@ node('master') {
     }"""
     server.upload(uploadSpec)
   }
-  stash includes: 'target/*.jar,
+  stash includes: 'target/*.jar',
   name: 'binary'
 }
 node('master_pt') {
