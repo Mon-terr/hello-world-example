@@ -38,7 +38,7 @@ node('master_pt') {
   }
   stage ('Deploy '){
     unstash 'binary'
-    sh 'cp target/*.war /root/nems2/deploy_test/';
+    sh 'cp target/*.jar /root/nems2/deploy_test/';
   }
   stage ('Promote build in Artifactory'){
     withCredentials([usernameColonPassword(credentialsId:
