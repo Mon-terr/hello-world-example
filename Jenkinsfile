@@ -29,4 +29,23 @@ node('master') {
     }"""
     server.upload(uploadSpec)
   }
+  stash includes: 'target/*.jar,
+  name: 'binary'
+}
+node('master_pt') {
+  stage ('Start Tomcat'){
+    sh 'cd /root/nems2/deploy_test/';
+  }
+  stage ('Deploy '){
+    unstash 'binary'
+    sh 'cp target/*.war /root/nems2/deploy_test/';
+  }
+  stage ('Promote build in Artifactory'){
+    withCredentials([usernameColonPassword(credentialsId:
+     'artifactory-account', variable: 'credentials')]) {
+      sh 'curl -u${credentials} -X PUT
+      "http://172.17.201.158:8081/artifactory/api/storage/jenkins_test_demo/
+      ${BUILD_NUMBER}/*.jar?properties=Performance-Tested=Yes"';
+    }
+  }
 }
