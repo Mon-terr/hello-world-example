@@ -9,13 +9,13 @@ node('master') {
     junit '**/target/surefire-reports/TEST-*.xml'
     archive 'target/*.jar'
   }
-  stage ('Integration Test'){
-      withMaven(maven: 'M3') {
-        sh 'mvn clean verify -Dsurefire.skip=true';
-      }
-    junit '**/target/failsafe-reports/TEST-*.xml'
-    archive 'target/*.jar'
-  }
+//  stage ('Integration Test'){
+//     withMaven(maven: 'M3') {
+//        sh 'mvn clean verify -Dsurefire.skip=true';
+//      }
+//    junit '**/target/failsafe-reports/TEST-*.xml'
+//    archive 'target/*.jar'
+//  }
   stage ('Publish'){
     def server = Artifactory.server 'Study Artifactory Server'
     def uploadSpec = """{
