@@ -43,9 +43,7 @@ node('master_pt') {
   stage ('Promote build in Artifactory'){
     withCredentials([usernameColonPassword(credentialsId:
      'artifactory-account', variable: 'credentials')]) {
-      sh 'curl -u${credentials} -X PUT
-      "http://172.17.201.158:8081/artifactory/api/storage/jenkins_test_demo/
-      ${BUILD_NUMBER}/*.jar?properties=Performance-Tested=Yes"';
+      sh 'curl -u${credentials} -X PUT "http://172.17.201.158:8081/artifactory/api/storage/jenkins_test_demo/${BUILD_NUMBER}/*.jar?properties=Performance-Tested=Yes"';
     }
   }
 }
