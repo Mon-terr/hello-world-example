@@ -42,7 +42,7 @@ node('master_pt') {
   }
   stage('Excution JAR After Deploy') {
 	 sh 'date "+%Y-%m-%d %H:%M:%S" >> /root/nems2/deploy_test/echo.out';
-	 sh 'ehco " | This is part of shell script For Test \n" >> /root/nems2/deploy_test/echo.out';
+	 sh 'echo " | This is part of shell script For Test \n" >> /root/nems2/deploy_test/echo.out';
 	 
 	 
   }
