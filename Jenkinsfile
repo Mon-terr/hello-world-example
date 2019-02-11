@@ -29,8 +29,9 @@ node('master_pt') {
 
   stage ('Deploy_SCP'){
     unstash 'binary'
-    sh 'scp target/*.jar root@172.17.201.146:/root/nems2/jenkins_deploy_test/';
-	sh 'scp target/*.jar root@172.17.201.150:/root/nems2/jenkins_deploy_test/';
+	sh 'cp target/*.jar /root/nems2/jenkins_deploy_test/';
+    sh 'scp /root/nems2/jenkins_deploy_test/*.jar root@172.17.201.146:/root/nems2/jenkins_deploy_test/';
+	sh 'scp /root/nems2/jenkins_deploy_test/*.jar root@172.17.201.150:/root/nems2/jenkins_deploy_test/';
   }
 
   stage('Excution JAR After Deploy') {
