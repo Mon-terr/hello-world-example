@@ -46,7 +46,7 @@ node('master_pt') {
 					cleanRemote: false,
 					excludes: '',
 					//execCommand: 'echo \'Hello Deploy Success In BHMC\' >> /root/nems2/jenkins_deploy_test/echo.out',
-					execCommand: 'sh "curl -u admin:suresoft0 -X 'http://172.17.201.158:8081/artifactory/api/storage/jenkins_test_demo_test/${BUILD_NUMBER}/*.jar'"',
+					execCommand: 'sh "curl -u 'admin:suresoft0' -X 'http://172.17.201.158:8081/artifactory/api/storage/jenkins_test_demo_test/${BUILD_NUMBER}/*.jar'"',
 					execTimeout: 120000,
 					flatten: false,
 					makeEmptyDirs: true,
