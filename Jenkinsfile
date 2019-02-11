@@ -42,7 +42,7 @@ node('master_pt') {
 				sshTransfer(
 					cleanRemote: false,
 					excludes: '',
-					execCommand: 'sh "scp root@172.17.201.158:/root/nems2/jenkins_deploy_test/*.jar /root/nems2/jenkins_deploy_test/"',
+					execCommand: 'sh "scp root@172.17.201.158:/root/nems2/jenkins_deploy_test/helloworld-example-0.1.0.jar /root/nems2/jenkins_deploy_test/"',
 					execTimeout: 120000,
 					flatten: false,
 					makeEmptyDirs: true,
@@ -74,7 +74,7 @@ node('master_pt') {
 				sshTransfer(
 					cleanRemote: false,
 					excludes: '',
-					execCommand: 'sh "scp root@172.17.201.158:/root/nems2/jenkins_deploy_test/*.jar /root/nems2/jenkins_deploy_test/"',
+					execCommand: 'sh "scp root@172.17.201.158:/root/nems2/jenkins_deploy_test/helloworld-example-0.1.0.jar /root/nems2/jenkins_deploy_test/"',
 					//execCommand: 'echo \'Hello Deploy Success In DYK\' >> /root/nems2/jenkins_deploy_test/echo.out',
 					execTimeout: 120000,
 					flatten: false,
