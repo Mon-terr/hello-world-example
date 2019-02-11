@@ -9,7 +9,7 @@ node('master') {
     junit '**/target/surefire-reports/TEST-*.xml'
     archive 'target/*.jar'
   }
-  stage ('Publish_Upload_Artifactory'){
+  stage ('Publish_Upload Artifactory'){
     def server = Artifactory.server 'Study Artifactory Server'
     def uploadSpec = """{
       "files": [
@@ -31,7 +31,7 @@ node('master_pt') {
   }
   stage ('Deploy_SSH transfer'){
     unstash 'binary'
-    sh 'cp target/*.jar /root/nems2/deploy_test/';
+    //sh 'cp target/*.jar /root/nems2/deploy_test/';
 	sshPublisher alwaysPublishFromMaster: true,
 	publishers: [
 		sshPublisherDesc(
