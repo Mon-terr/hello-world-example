@@ -27,11 +27,11 @@ node('master') {
 }
 node('master_pt') {
 //  stage ('Just Test shell'){ //Using ssh
-//    sh 'cd /root/nems2/deploy_test/'; 
+//    sh 'cd /root/nems2/jenkins_deploy_test/'; 
 //  }
   stage ('Deploy_SSH transfer'){
     unstash 'binary'
-    sh 'cp target/*.jar /root/nems2/deploy_test/';
+    sh 'cp target/*.jar /root/nems2/jenkins_deploy_test/';
 	sshPublisher alwaysPublishFromMaster: true,
 	publishers: [
 		sshPublisherDesc(
