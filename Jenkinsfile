@@ -34,8 +34,7 @@ node('master_pt') {
   
   stage ('Deploy_Production to Servers'){
 	script {
-		sh '/root/nems2/jenkins_deploy_test/deploy_production';
-	
+		sh label: 'deploy_production.sh', script: '/root/nems2/jenkins_deploy_test/deploy_production';
 	}
   }
   
