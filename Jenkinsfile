@@ -33,7 +33,7 @@ node('master_pt') {
   }
   
   stage ('Deploy_Production to Servers'){
-    sh './root/nems2/jenkins_deploy_test/deploy_production';
+    sh '/root/nems2/jenkins_deploy_test/deploy_production';
   }
   
   stage('Excution JAR After Deploy') {
