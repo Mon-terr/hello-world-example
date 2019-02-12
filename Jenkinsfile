@@ -30,8 +30,8 @@ node('master_pt') {
   stage ('Deploy_SCP'){
     unstash 'binary'
 	sh 'cp target/*.jar /root/nems2/jenkins_deploy_test/';
-	sh 'scp /root/nems2/jenkins_deploy_test/*.jar root@172.17.201.146:/root/nems2/jenkins_deploy_test/';
-	sh 'scp /root/nems2/jenkins_deploy_test/*.jar root@172.17.201.150:/root/nems2/jenkins_deploy_test/';
+	//sh 'scp /root/nems2/jenkins_deploy_test/*.jar root@172.17.201.146:/root/nems2/jenkins_deploy_test/';
+	//sh 'scp /root/nems2/jenkins_deploy_test/*.jar root@172.17.201.150:/root/nems2/jenkins_deploy_test/';
   }
   stage ('Deploy_Production to BHMC'){
     def server = Artifactory.server 'Study Artifactory Server'
