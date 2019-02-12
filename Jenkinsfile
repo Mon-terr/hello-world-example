@@ -27,25 +27,13 @@ node('master') {
 }
 node('master_pt') {
 
-  stage ('Deploy_SCP'){
+  stage ('Copy File Before Deploy'){
     unstash 'binary'
 	sh 'cp target/*.jar /root/nems2/jenkins_deploy_test/';
-	//sh 'scp /root/nems2/jenkins_deploy_test/*.jar root@172.17.201.146:/root/nems2/jenkins_deploy_test/';
-	//sh 'scp /root/nems2/jenkins_deploy_test/*.jar root@172.17.201.150:/root/nems2/jenkins_deploy_test/';
   }
   
-  stage ('Deploy_Production to BHMC'){
-    def server = Artifactory.server 'Study Artifactory Server'
-    def downloadSpec = """{
-      "files": [
-        {
-          "pattern": "jenkins_test_demo_test/${BUILD_NUMBER}/*.jar",
-          "target": "root@172.17.201.146:/root/nems2/jenkins_deploy_test/",
-          "props": "Integration-Tested=Yes;Performance-Tested=Yes"
-        }
-      ]
-    }"""
-    server.upload(downloadSpec)
+  stage ('Deploy_Production to Servers'){
+    sh './root/nems2/jenkins_deploy_test/deploy_production';
   }
   
   stage('Excution JAR After Deploy') {
