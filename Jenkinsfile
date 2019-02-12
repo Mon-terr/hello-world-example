@@ -33,6 +33,7 @@ node('master_pt') {
 	//sh 'scp /root/nems2/jenkins_deploy_test/*.jar root@172.17.201.146:/root/nems2/jenkins_deploy_test/';
 	//sh 'scp /root/nems2/jenkins_deploy_test/*.jar root@172.17.201.150:/root/nems2/jenkins_deploy_test/';
   }
+  
   stage ('Deploy_Production to BHMC'){
     def server = Artifactory.server 'Study Artifactory Server'
     def downloadSpec = """{
@@ -46,6 +47,7 @@ node('master_pt') {
     }"""
     server.upload(downloadSpec)
   }
+  
   stage('Excution JAR After Deploy') {
 	 sh 'date "+%Y-%m-%d %H:%M:%S" >> /root/nems2/deploy_test/echo.out';
 	 sh 'echo " | This is part of shell script For Test \n" >> /root/nems2/deploy_test/echo.out';
