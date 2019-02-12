@@ -35,7 +35,9 @@ node('master_pt') {
   stage ('Deploy_Production to Servers'){
 	sh 'cd /root/nems2/jenkins_deploy_test/';
 	//sh './deploy_production';
+	sh 'echo "DHMC Deloying *.jar" >> /root/nems2/jenkins_deploy_test/echo.out'
 	sh 'scp /root/nems2/jenkins_deploy_test/*.jar root@172.17.201.146:/root/nems2/jenkins_deploy_test/';
+	sh 'echo "DYK Deloying *.jar" >> /root/nems2/jenkins_deploy_test/echo.out'
 	sh 'scp /root/nems2/jenkins_deploy_test/*.jar root@172.17.201.150:/root/nems2/jenkins_deploy_test/';
   }
   
